@@ -1,11 +1,13 @@
 package edu.eci.pdsw.entities;
 
+import org.apache.ibatis.annotations.Param;
+
 public class User {
 	private String login;
 	private String name;
 	private String lastName;
 	
-	public User(String login, String name, String lastName) {
+	public User(@Param("login")  String login,@Param("name") String name,@Param("lastName") String lastName) {
 		super();
 		this.login = login;
 		this.name = name;
@@ -16,7 +18,7 @@ public class User {
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(@Param("login") String login) {
 		this.login = login;
 	}
 
@@ -24,7 +26,7 @@ public class User {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(@Param("name") String name) {
 		this.name = name;
 	}
 
@@ -32,7 +34,7 @@ public class User {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(@Param("lastName") String lastName) {
 		this.lastName = lastName;
 	}
 

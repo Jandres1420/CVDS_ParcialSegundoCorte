@@ -22,6 +22,22 @@
             WHERE b.author = #{login}
         </if>
     </select>
+
+    <select id="findByTitle" resultMap="BlogComments" parameterType="string">
+        SELECT
+        b.title,
+        b.creation_date,
+        u.login,
+        u.name,
+        u.lastName,
+        c.content
+        FROM
+        BLOG as b JOIN u BLOG_USUARIO ON b.author LIKE u.login JOIN c BLOG_COMMENT ON c.blog_id LIKE b.id
+        <if test="login != null">
+            WHERE c.author LIKE  u.name
+        </if>
+    </select>
+
     <delete id="deleteAll">
         delete from BLOG
     </delete>
